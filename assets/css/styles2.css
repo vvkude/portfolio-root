@@ -1,0 +1,1058 @@
+@charset "UTF-8";
+
+/* ===========================================================================
+
+        ^global
+        ^resets
+
+   =========================================================================== */
+
+*,
+:after,
+:before {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased
+}
+
+/* ===========================================================================
+
+        ^root elements
+
+   =========================================================================== */
+
+body,
+html {
+    background: #f0f0f0;
+    color: #333;
+    font-family: Lato, Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 300; /* light font weight - do I even need 400 weight? */
+    height: 100%
+}
+
+body,
+html {
+    font-size: 100%;
+    line-height: 1.5
+}
+
+body,
+html {
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility
+}
+
+/* ===========================================================================
+
+        ^typographical and selection elements
+        https://developer.mozilla.org/en-US/docs/Web/CSS/::selection
+
+   =========================================================================== */
+
+::-moz-selection {
+    background: #15262A;
+    color: #fff;
+    text-shadow: none
+}
+
+::selection {
+    background: #15262A;
+    color: #fff;
+    text-shadow: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #222;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+li small,
+p small {
+    display: inline-block;
+    margin: 0
+}
+
+p {
+    margin-top: 0
+}
+
+a,
+a:visited {
+    background: 0 0;
+    color: #1696E5
+}
+
+a:active,
+a:hover,
+a:visited:active,
+a:visited:hover {
+    color: #ff7a97
+}
+
+a:focus,
+a:visited:focus {
+    outline: thin dotted
+}
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019"
+}
+
+blockquote {
+    color: #222
+}
+
+blockquote p {
+    margin-bottom: 0
+}
+
+blockquote p:after,
+blockquote p:before {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.625em;
+    font-weight: 400;
+    line-height: 0;
+    position: relative;
+    top: 2px
+}
+
+blockquote p:after {
+    content: "\201D";
+    right: -1px
+}
+
+blockquote p:before {
+    content: "\201C";
+    left: -1px
+}
+
+blockquote small {
+    color: #999;
+    font-size: .75em;
+    font-style: normal;
+    margin-bottom: 0;
+    padding-left: 12px
+}
+
+blockquote small:before {
+    content: "– "
+}
+
+sub,
+sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+/**
+ *
+ * Pay attention to ^code formatting
+ *
+ **/
+
+code,
+kbd,
+samp {
+    border: 1px solid #e0e0e0;
+    border-left-width: 6px;
+    background: #f0f0f0;
+    display: block;
+    font-family: monospace, serif;
+    font-size: 1em;
+    line-height: 1.4;
+    padding: 8px
+}
+
+code pre,
+kbd pre,
+samp pre {
+    overflow: hidden
+}
+
+li code,
+li kbd,
+li pre,
+li samp,
+p code,
+p kbd,
+p pre,
+p samp {
+    display: inline;
+    margin: 0;
+    padding: 4px
+}
+
+pre {
+    line-height: 1;
+    overflow: auto;
+    white-space: pre-wrap
+}
+
+ol,
+ul {
+    padding-left: 24px
+}
+
+ol>:last-child,
+ul>:last-child {
+    margin-bottom: 0
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin-top: 8px
+}
+
+ol ol {
+    list-style-type: lower-alpha
+}
+
+ol ol ol {
+    list-style-type: lower-roman
+}
+
+nav li {
+    margin: 0 0 8px
+}
+
+img {
+    color: #ff4136;
+    max-width: 100%
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .8);
+    display: block;
+    height: 1px;
+    margin: 32px 0
+}
+
+.media {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 24px
+}
+
+.media small {
+    display: block
+}
+
+.media-text>:last-child {
+    margin-bottom: 0
+}
+
+.media-object {
+    float: left;
+    margin: 0 16px 8px 0;
+    max-width: 50%
+}
+
+@media screen and (max-width:700px) {
+    .media-object {
+        float: none;
+        margin: 0 0 8px;
+        max-width: 100%
+    }
+}
+
+.media-reverse .media-object {
+    float: right;
+    margin: 0 0 8px 16px
+}
+
+.media-no-wrap .media-text {
+    float: left;
+    width: 70%
+}
+
+/* ===========================================================================
+
+        ^media offsets
+         half an em from the edge
+
+   =========================================================================== */
+
+.media-no-wrap .media-object {
+    max-width: -moz-calc(30% - 16px);
+    max-width: -webkit-calc(30% - 16px);
+    max-width: calc(30% - 16px)
+}
+
+.media-no-wrap-split .media-text {
+    float: left;
+    width: 50%
+}
+
+.media-no-wrap-split .media-object {
+    max-width: -moz-calc(50% - 16px);
+    max-width: -webkit-calc(50% - 16px);
+    max-width: calc(50% - 16px)
+}
+
+.media-no-wrap-fourth .media-text {
+    float: left;
+    width: 75%
+}
+
+.media-no-wrap-fourth .media-object {
+    max-width: -moz-calc(25% - 16px);
+    max-width: -webkit-calc(25% - 16px);
+    max-width: calc(25% - 16px)
+}
+
+.media-no-wrap-opposite .media-text {
+    float: left;
+    width: 30%
+}
+
+.media-no-wrap-opposite .media-object {
+    max-width: -moz-calc(70% - 16px);
+    max-width: -webkit-calc(70% - 16px);
+    max-width: calc(70% - 16px)
+}
+
+/* ===========================================================================
+
+        ^positioning and layout
+         
+
+   =========================================================================== */
+
+.float-left {
+    float: left
+}
+
+.float-right {
+    float: right
+}
+
+.float-none {
+    float: none
+}
+
+.row {
+    margin-bottom: 20px;
+    margin-left: -40px
+}
+
+.col {
+    float: left;
+    margin-bottom: 0;
+    min-height: 1px;
+    padding-left: 40px;
+    position: relative;
+    width: 100%
+}
+
+.col>:last-child {
+    margin-bottom: 0
+}
+
+@media only screen and (max-width:770px) {
+    .col {
+        margin-bottom: 20px
+    }
+}
+
+.w-100 {
+    width: 100%
+}
+
+.w-90 {
+    width: 90%
+}
+
+.w-80 {
+    width: 80%
+}
+
+.w-75 {
+    width: 75%
+}
+
+.w-70 {
+    width: 70%
+}
+
+.w-66 {
+    width: 66.6666%
+}
+
+.w-60 {
+    width: 60%
+}
+
+.w-50 {
+    width: 50%
+}
+
+/***
+ *
+ * just over 768px, this is why this region was overlapping weirdly
+ *
+ ***/
+@media only screen and (max-width:770px) { 
+    .w-25,
+    .w-30,
+    .w-33,
+    .w-40,
+    .w-50,
+    .w-60,
+    .w-66,
+    .w-70,
+    .w-75,
+    .w-80,
+    .w-90 {
+        width: 100%
+    }
+}
+
+.txt-center {
+    text-align: center
+}
+
+.txt-left {
+    text-align: left
+}
+
+.txt-right {
+    text-align: right
+}
+
+.txt-callout {
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .15)inset;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .15)inset;
+    background: #eee;
+    border-left: 4px solid #00aeef;
+    font-size: 1.25em;
+    padding: 16px
+}
+
+.txt-callout:after,
+.txt-callout:before {
+    display: none
+}
+
+/* root elements */
+
+blockquote,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+pre {
+    margin: 0;
+    padding: 0
+}
+
+/* set a max-width of 100% for img and other replaced elements */
+img {
+    border: 0;
+    outline: 0
+}
+
+a:active,
+a:hover,
+a:visited:active,
+a:visited:hover {
+    outline: 0
+}
+
+nav ol,
+nav ul {
+    list-style: none;
+    padding: 0
+}
+
+ol,
+ul {
+    margin: 0 0 16px
+}
+
+.txt-h1,
+.txt-large,
+h1 {
+    line-height: 1
+}
+
+.txt-large {
+    font-size: 3.5em;
+    font-weight: 300
+}
+
+.txt-h1,
+h1 {
+    font-size: 3.125em;
+    font-weight: 300
+}
+
+.txt-h2,
+h2 {
+    font-size: 2.5em;
+    font-weight: 700
+}
+
+.txt-h3,
+h3 {
+    font-size: 2em;
+    font-weight: 300
+}
+
+.txt-h4,
+h4 {
+    font-size: 1.625em;
+    font-weight: 300
+}
+
+.txt-h5,
+h5 {
+    font-size: 1.25em;
+    font-weight: 300
+}
+
+.txt-h6,
+blockquote,
+h6 {
+    font-size: 1.125em;
+    font-weight: 300
+}
+
+.txt-base {
+    font-size: 1em;
+    font-weight: 300
+}
+
+.txt-small,
+small,
+sub,
+sup {
+    font-size: .875em;
+    font-weight: 300
+}
+
+.txt-tiny {
+    font-size: .75em;
+    font-weight: 300
+}
+
+.txt-mini {
+    font-size: .625em;
+    font-weight: 300
+}
+
+.bold,
+b,
+cite,
+strong {
+    font-weight: 700
+}
+
+blockquote,
+dfn,
+em,
+i,
+img {
+    font-style: italic
+}
+
+dfn[title] {
+    border-bottom: 1px dotted #ccc;
+    cursor: help
+}
+
+.clearfix:after,
+.media-reverse:after,
+.media:after,
+.nav-h:after,
+.row:after {
+    clear: both;
+    content: "";
+    display: table
+}
+
+article,
+aside,
+canvas,
+footer,
+header,
+main,
+nav,
+section,
+small {
+    display: block
+}
+
+/* important to throw elements off-screen to the left, 
+   so people tabbing with keyboard have proper flow*/
+.invis,
+.is-hidden {
+    border: 0!important;
+    height: 1px!important;
+    left: -999999px!important;
+    overflow: hidden!important;
+    position: absolute!important;
+    width: 1px!important
+}
+
+.media,
+.media-reverse {
+    margin-bottom: 2em
+}
+
+.nav-h a {
+    display: block;
+    padding: 8px;
+    border-right: 1px solid #999
+}
+
+.nav-h>li {
+    margin-bottom: 0
+}
+
+/* So divider doesn't show up on the last menu item */
+.nav-h li:last-child a {
+    border-right: 0
+}
+
+blockquote,
+code,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+kbd,
+li,
+nav ol,
+nav ul,
+p,
+samp,
+small {
+    margin-bottom: 16px
+}
+
+.header-base {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*background: url(desk.jpg) no-repeat fixed;
+    background-size: cover; */
+    background-color: #000;
+    color: #f0f0f0;
+    height: 33%;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    width: 100%;
+    z-index: 2
+}
+
+@media screen and (max-width:770px) {
+    .header-base {
+        position: static;
+        height: auto!important
+    }
+}
+
+.header-base h1,
+.header-base h2 {
+    color: #f0f0f0
+}
+
+.home-img {
+    border-radius: 50% / 50%; /* horizontal and vertical radii */
+    border: 2px solid rgba(252, 73, 76, .8);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, .25);*/
+    max-width: 180px;
+    margin-bottom: .7em
+}
+
+@media screen and (max-width:770px) {
+    .home-img {
+        max-width: 20%
+    }
+}
+
+.social-list {
+    list-style: none;
+    padding: 0
+}
+
+.social-list li {
+    display: inline-block;
+    margin: 0 16px
+}
+
+.social-icons {
+    background: url(../img/social_icons.png);
+    display: block;
+    height: 24px;
+    width: 25px
+}
+
+.twitter {
+    background-position: 0 0
+}
+
+.dribbble {
+    background-position: 25px 0
+}
+
+.github {
+    background-position: -34px 0;
+    width: 30px
+}
+
+.mb-0 {
+    margin-bottom: 0
+}
+
+.v-center {
+    padding-top: 17%
+}
+
+@media screen and (max-width:770px) {
+    .v-center {
+        padding: 26px 0 1px
+    }
+}
+
+.home-page .header-base,
+.aboutv .header-base {
+    background-image: url(../img/home.jpg);
+    height: 100%
+}
+
+.header-blog .date-tags {
+    padding-top: 16px
+}
+
+.nav-fixed-area {
+    padding-top: 40%
+}
+
+@media screen and (max-width:770px) {
+    .nav-fixed-area {
+        padding-top: 30px
+    }
+}
+
+.nav-fixed-area.home-page,
+.nav-fixed-area.aboutv{
+    padding-top: 85%
+}
+
+@media screen and (max-width:770px) {
+    .nav-fixed-area.home-page,
+    .nav-fixed-area.aboutv {
+        padding-top: 30px
+    }
+}
+
+.nav-fixed {
+    height: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .4), 0 0 100px rgba(10, 10, 10, .53)inset;
+    z-index: 16
+}
+
+.nav-fixed li {
+    margin: 0
+}
+
+.nav-fixed a {
+    color: #fff;
+    position: relative;
+    text-decoration: none
+}
+
+.nav-h {
+    margin: 0;
+    text-align: center
+}
+
+.nav-h>li {
+    float: left;
+    width: 25%
+}
+
+.contribute .link-contribute,
+.aboutv .link-aboutv,
+.home-page .link-about,
+.nav-fixed a:active,
+.nav-fixed a:hover,
+.projects .link-projects,
+.writings .link-writing {
+    background: rgba(0, 0, 0, .6);
+    border-bottom-color: #000; /* version b*/
+    color: #ff7a97;
+    text-decoration: none;
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 680px;
+    padding: 32px
+}
+
+.content>:last-child {
+    margin-bottom: 0
+}
+
+@media screen and (max-width:770px) {
+    .content {
+        padding: 28px 20px
+    }
+}
+
+.content-base,
+.footer-base {
+    position: relative;
+    z-index: 3
+}
+
+.content-base {
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    background: #fafafa
+}
+
+body {
+    font-size: 120%
+}
+
+@media screen and (max-width:770px) {
+    body {
+        font-size: 78%
+    }
+    li,
+    p {
+        font-size: 120%
+    }
+    pre {
+        font-size: 125%;
+        line-height: 1.3
+    }
+}
+
+.kill-list {
+    list-style: none;
+    padding: 0
+}
+
+.project-link:hover .project-img {
+    box-shadow: 0 0 0 4px #37646e;
+    transform: scale(1.02)
+}
+
+.project-img {
+    box-shadow: 0 0 transparent;
+    border: 1px solid #ccc;
+    transition: transform .2s, box-shadow .2s
+}
+
+.line-tight {
+    line-height: 1.2!important
+}
+
+.line-tighter {
+    line-height: 1!important
+}
+
+.blog-title__archive {
+    margin-bottom: 4px
+}
+
+.date-tags {
+    margin-bottom: 8px
+}
+
+.date-tags strong {
+    letter-spacing: .05em
+}
+
+@media screen and (max-width:770px) {
+    .date-tags {
+        font-size: .9em
+    }
+}
+
+.archive--list {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1em;
+    padding-bottom: 1em
+}
+
+.archive--list:last-of-type {
+    border-bottom: 0
+}
+
+.d-block {
+    display: block
+}
+
+code,
+pre {
+    background: #272822;
+    border: 1px solid #aaa;
+    color: #eee
+}
+
+pre code {
+    background: 0 0;
+    border: 0
+}
+
+.markdown-code {
+    margin-bottom: 20px
+}
+
+.selector {
+    color: #f92772;
+    padding-left: 8px
+}
+
+.value {
+    color: #56bcdf
+}
+
+.comment {
+    color: #ccc
+}
+
+.desc-intro {
+    margin: 0
+}
+
+.contribute-label {
+    color: #37646e;
+    cursor: pointer;
+    text-decoration: underline
+}
+
+.contribute-label:hover {
+    color: #15262a
+}
+
+.contribute-desc {
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    background: #fff;
+    border: 1px solid #ccc;
+    font-size: .75em;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0
+}
+
+input:checked+.contribute-desc {
+    max-height: 150px;
+    opacity: 1;
+    overflow: auto;
+    padding: 8px
+}
+
+.update-block {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    padding: 8px
+}
+
+.ad-wrap {
+    background-color: #fff;
+    border: 1px solid #eee;
+    float: right;
+    margin: 20px;
+    max-width: 200px;
+    padding: 16px 16px 12px;
+    text-align: center
+}
+
+.ad-wrap a {
+    margin: 0 auto
+}
+
+@media screen and (max-width:600px) {
+    .ad-wrap {
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        max-width: 100%;
+        position: absolute;
+        width: 100%
+    }
+}
+
+@media screen and (max-width:600px) {
+    .article-area {
+        padding-bottom: 220px
+    }
+}
+
+.ad-inner {
+    display: inline-block
+}
+
+.one .bsa_it_ad .bsa_it_i {
+    display: inline-block;
+    float: none!important;
+    margin: 0 auto!important;
+    padding: 0
+}
+
+.one .bsa_it_ad .bsa_it_d {
+    margin-bottom: 20px
+}
+
+/* footer */
+
+.footer-base {
+    background: #000;
+    box-shadow: 0 0 10px rgba(255, 255, 255, .05)inset;
+    color: #fff
+}
+
+.footer-base a {
+    color: #1696E5
+}

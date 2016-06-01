@@ -1,0 +1,1217 @@
+@charset "UTF-8";
+
+/* ===========================================================================
+
+        ^targeting
+        ^debugging
+
+   =========================================================================== */
+
+.border__debug--red {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FF0000
+}
+
+.border__debug--blue {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #0000FF
+}
+
+.border__debug--green {
+    border-width: 5px;
+    border-style: solid;
+    border-color: #00FF00
+}
+
+/* ===========================================================================
+
+        ^global
+        ^resets
+
+   =========================================================================== */
+
+*,
+:after,
+:before {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased
+}
+
+.clearfix:after,
+.media-reverse:after,
+.media:after,
+.nav__container:after,
+.row:after {
+    clear: both;
+    content: "";
+    display: table
+}
+
+/* ===========================================================================
+
+        ^cleaning
+
+   =========================================================================== */
+
+.clean-list {
+    list-style: none;
+    padding: 0
+}
+
+/* ===========================================================================
+
+        ^root elements
+
+   =========================================================================== */
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300,300italic,700);
+
+body,
+html {
+    background-color: #000;
+    color: #333;
+    font-family: Alegreya, Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 300; /* light font weight - do I even need 400 weight? */
+    height: 100%
+}
+
+body,
+html {
+    font-size: 100%;
+    line-height: 1.5
+}
+
+body,
+html {
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility
+}
+
+/* ===========================================================================
+
+        ^typographical and selection elements
+        https://developer.mozilla.org/en-US/docs/Web/CSS/::selection
+
+   =========================================================================== */
+
+::-moz-selection {
+    background: #ff7a97; /*[TODO] find best websafe match*/
+    color: #000;
+    text-shadow: none
+}
+
+::selection {
+    background: #ff7a97;
+    color: #000;
+    text-shadow: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+li small,
+p small {
+    display: inline-block;
+    margin: 0
+}
+
+p {
+    margin-top: 16px;
+}
+
+a,
+a:visited {
+    background: 0 0;
+    color: #0099cc
+}
+
+a:visited {
+    color: #cc0099
+}
+
+a:active,
+a:hover,
+a:visited:active,
+a:visited:hover {
+    color: #ff7a97
+}
+
+.content__container.bg__adjust--lightsalmon a:hover {
+    color:#fff;
+}
+
+a:focus,
+a:visited:focus {
+    outline: thin dotted
+}
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019"
+}
+
+blockquote {
+    color: #333
+}
+
+blockquote p {
+    margin-bottom: 0
+}
+
+blockquote p:after,
+blockquote p:before {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1.625em;
+    font-weight: 700;
+    line-height: 0;
+    position: relative;
+    top: 2px
+}
+
+blockquote p:after {
+    content: "\201D";
+    right: -1px
+}
+
+blockquote p:before {
+    content: "\201C";
+    left: -1px
+}
+
+blockquote small {
+    color: #999;
+    font-size: .75em;
+    font-style: normal;
+    margin-bottom: 0;
+    padding-left: 12px
+}
+
+blockquote small:before {
+    content: "– "
+}
+
+/**
+ *
+ * ^citations
+ * ^bibliography
+ *
+ **/
+
+sub,
+sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+/**
+ *
+ * Pay attention to ^code formatting
+ *
+ **/
+
+code,
+kbd,
+samp {
+    border: 1px solid #e0e0e0;
+    border-left-width: 8px;
+    background: #f0f0f0;
+    display: block;
+    font-family: monospace, serif;
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 8px
+}
+
+code pre,
+kbd pre,
+samp pre {
+    overflow: hidden
+}
+
+li code,
+li kbd,
+li pre,
+li samp,
+p code,
+p kbd,
+p pre,
+p samp {
+    display: inline;
+    margin: 0;
+    padding: 4px
+}
+
+pre {
+    line-height: 1;
+    overflow: auto;
+    white-space: pre-wrap
+}
+
+/* ===========================================================================
+
+        ^circular text
+        [FIXME] text along svg path clips outside of visible region
+
+   =========================================================================== */
+
+.circular {
+    width: 30em;
+    height: 30em;
+    margin: 3em auto 0
+}
+
+.circular svg {
+    display: block;
+    overflow: visible
+}
+
+.circular path {
+    fill: none
+}
+
+ol,
+ul {
+    padding-left: 24px
+}
+
+ol>:last-child,
+ul>:last-child {
+    margin-bottom: 0
+}
+
+nav li {
+    margin: 0 0 8px
+}
+
+img {
+    color: #ff99ac;
+    max-width: 100%
+}
+
+ul.tag-line {
+    list-style-type: square;
+    font-size: .9em;
+    margin-left: .5em
+}
+
+ul.tag-line ul {
+    list-style-type: upper-roman;
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+hr {
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0)
+}
+
+p+hr,
+.project__media>hr,
+.salmonella {
+    border: 0;
+    height: 1px;
+    margin: 32px
+}
+
+/* cute, but not really a good name */
+/* also probably a better way to target an hr if I find a use pattern */
+.salmonella {
+    background-image: -webkit-linear-gradient(left, #ff99ac, #f0f0f0, #ff99ac);
+    background-image: -moz-linear-gradient(left, #ff99ac, #f0f0f0, #ff99ac);
+    background-image: -ms-linear-gradient(left, #ff99ac, #f0f0f0, #ff99ac);
+    background-image: -o-linear-gradient(left, #ff99ac, #f0f0f0, #ff99ac)
+}
+
+.project__media {
+    border-bottom: 1px solid #8c8b8b;
+    border-color: -webkit-linear-gradient(left, #ff99ac, #f0f0f0, #ff99ac);
+    padding: 24px
+}
+
+.project__media:last-of-type {
+    border: none
+}
+
+.project__media--text>:last-child {
+    margin-bottom: 0
+}
+
+/*.project__media--text>p+p {
+    margin-bottom: 80px;
+}*/
+
+.project__media--text>p+p+p {
+    margin-bottom: 16px;
+}
+
+.project__media--container {
+    margin: 0 16px 8px 0;
+    max-width: 50%;
+    float: left
+}
+
+.cs__media {
+    margin: 0 16px 8px 0;
+    max-width: 100%;
+}
+
+@media screen and (max-width:700px) {
+    .project__media--container {
+        margin: 0 0 8px;
+        max-width: 100%;
+        /* [below] clear float on smaller viewport widths*/
+        float: none
+    }
+
+    .project__media--text>p {
+    margin-bottom: 16px;
+    }
+}
+
+/* ===========================================================================
+
+        ^media offsets
+         half an em from the edge
+
+   =========================================================================== */
+
+.project__media--offset {
+    max-width: -moz-calc(30% - 16px);
+    max-width: -webkit-calc(30% - 16px);
+    max-width: calc(30% - 16px)
+}
+
+/* ===========================================================================
+
+        ^positioning and layout: structure
+         
+
+   =========================================================================== */
+
+.float-left {
+    float: left
+}
+
+.float-right {
+    float: right
+}
+
+.float-none {
+    float: none
+}
+
+.row {
+    margin-bottom: 20px;
+    margin-left: -40px
+}
+
+.w-100 {
+    width: 100%
+}
+
+.w-90 {
+    width: 90%
+}
+
+.w-80 {
+    width: 80%
+}
+
+.w-75 {
+    width: 75%
+}
+
+.w-70 {
+    width: 70%
+}
+
+.w-66 {
+    width: 66.6666%
+}
+
+.w-60 {
+    width: 60%
+}
+
+.w-50 {
+    width: 50%
+}
+
+/***
+ *
+ * [FIXME] 05.29.2016...it's fixed...?
+ * just over 768px, this is why this region was overlapping weirdly
+ *
+ ***/
+@media only screen and (max-width:770px) { 
+    .w-25,
+    .w-30,
+    .w-33,
+    .w-40,
+    .w-50,
+    .w-60,
+    .w-66,
+    .w-70,
+    .w-75,
+    .w-80,
+    .w-90 {
+        width: 100%
+    }
+}
+
+.block__elem--center {
+    margin: 0 auto
+}
+
+.margin__top--16px {
+    margin-top: 16px
+}
+
+/* ===========================================================================
+
+        ^toggles
+        ^positioning: text
+        ^sizing: text
+
+   =========================================================================== */
+
+.display-block {
+    display: block
+}
+
+.txt-center {
+    text-align: center
+}
+
+.txt-left {
+    text-align: left
+}
+
+.txt-right {
+    display: block;
+    text-align: right
+}
+
+.tag-line,
+.project--slug {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    letter-spacing: .06em;
+    font-size: 1.625em
+}
+
+.project--slug {
+    letter-spacing: .02em;
+    line-height: 1.125em
+}
+
+@media screen and (max-width:770px) {
+    .project--slug {
+        letter-spacing: .02em;
+        font-size: .5em;
+    }
+}
+
+/* root elements */
+
+blockquote,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+pre {
+    margin: 0;
+    padding: 0
+}
+
+/* set a max-width of 100% for img and other replaced elements */
+img {
+    border: 0;
+    outline: 0
+}
+
+a:active,
+a:hover,
+a:visited:active,
+a:visited:hover {
+    outline: 0
+}
+
+
+/* ^jump nav */
+nav ol,
+nav ul {
+    list-style: none;
+    padding: 0
+}
+
+ol,
+ul {
+    margin: 0 0 16px
+}
+
+.h1-spaced {
+    letter-spacing: .06em
+}
+
+@media screen and (max-width:770px) {
+    .h1-spaced,
+    .tag-line {
+        letter-spacing: .05em
+    }
+}
+
+.txt-h1,
+.txt-large,
+h1 {
+    line-height: 1
+}
+
+.txt-large {
+    font-size: 3.5em;
+    font-weight: 300
+}
+
+.txt-h1,
+h1 {
+    font-size: 3.125em;
+    font-weight: 300
+}
+
+.txt-h2,
+h2 {
+    font-size: 2.5em;
+    font-weight: 700
+}
+
+.txt-h3,
+h3 {
+    font-size: 2em;
+    font-weight: 300
+}
+
+.txt-h4,
+h4 {
+    font-size: 1.625em;
+    font-weight: 300
+}
+
+.txt-h5,
+h5 {
+    font-size: 1.25em;
+    font-weight: 300
+}
+
+.txt-h6,
+blockquote,
+h6 {
+    font-size: 1.125em;
+    font-weight: 300
+}
+
+.txt-base {
+    font-size: 1.425em;
+    font-weight: 300
+}
+
+.txt-small,
+small,
+sub,
+sup {
+    font-size: .875em;
+    font-weight: 300
+}
+
+.slug {
+    font-size: .75em;
+    font-weight: 300
+}
+
+.bold,
+b,
+cite,
+strong {
+    font-weight: 700
+}
+
+blockquote,
+dfn,
+em,
+i,
+img {
+    font-style: italic
+}
+
+.stroked-text--salmon {
+    color: #000;
+    text-shadow: 1px 1px #ff7a97, -1px -1px #000,
+                 1px -1px #fff, -1px 1px #ff7a97
+}
+
+dfn[title] {
+    border-bottom: 1px dotted #ccc;
+    cursor: help
+}
+
+article,
+aside,
+canvas,
+footer,
+header,
+main,
+nav,
+section,
+small {
+    display: block
+}
+
+/* padding at the end of paragraph elements before articles */
+section>p:last-of-type {
+    margin-bottom: 32px
+}
+
+/* important to throw elements off-screen to the left, 
+   so people tabbing with keyboard have proper flow*/
+.invisible-offscreen__left,
+.is-hidden__left {
+    border: 0!important;
+    height: 1px!important;
+    left: -999999px!important;
+    overflow: hidden!important;
+    position: absolute!important;
+    width: 1px!important
+}
+
+.media,
+.media-reverse {
+    margin-bottom: 2em
+}
+
+.nav__container a {
+    display: block;
+    padding: 14px;
+    border-right: 1px solid #999;
+    font-size: 1em;
+    font-weight: 700
+}
+
+.nav__container>li {
+    margin-bottom: 0
+}
+
+/* So divider doesn't show up on the last menu item */
+.nav__container li:last-child a {
+    border-right: 0
+}
+
+.nav__container {
+    margin: 0;
+    text-align: center
+}
+
+.nav__container>li {
+    float: left;
+    width: 25%
+}
+
+blockquote,
+code,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+kbd,
+li,
+nav ol,
+nav ul,
+p,
+samp,
+small {
+    margin-bottom: 16px
+}
+
+.header__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*background: url(desk.jpg) no-repeat fixed;
+    background-size: cover; */
+    background-color: #000;
+    color: #f0f0f0;
+    height: 33%;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    width: 100%;
+    z-index: 2
+}
+
+@media screen and (max-width:770px) {
+    .header__container {
+        position: static;
+        height: auto!important
+    }
+}
+
+.header__container h1,
+.header__container h2 {
+    color: #f0f0f0
+}
+
+/**
+ *
+ * Got caught on an edge case with border shorthand :: see MDN article
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties
+ *
+ **/
+
+.img__coin {
+    border-radius: 2000px; /* 50% 50%? */
+    border: 2px solid rgba(252, 73, 76, .8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    max-width: 300px;
+    margin-bottom: .7em
+}
+
+@media screen and (max-width:770px) {
+    .img__coin {
+        max-width: 20%
+    }
+}
+
+/* ===========================================================================
+
+        ^social media
+        ^social media sprites
+
+   =========================================================================== */
+
+.social__container--list {
+    list-style: none;
+    padding: 0
+}
+
+.social__container--list li {
+    display: inline-block;
+    margin: 0 16px
+}
+
+.social__container--icons {
+    background: url(../img/social_icons.png);
+    display: block;
+    height: 24px;
+    width: 25px
+}
+
+.twitter {
+    background-position: 0 0
+}
+
+.dribbble {
+    background-position: 25px 0
+}
+
+.github {
+    background-position: -34px 0;
+    width: 30px
+}
+
+.hero__container {
+    padding-top: 17%
+}
+
+@media screen and (max-width:770px) {
+    .hero__container {
+        padding: 26px 0 1px
+    }
+}
+
+/**
+ * 
+ * [FIXME] Weird break on 11-inch mid 2012 macbook airs 1369px, below 
+ * possibly a graphics card issue, oddly enough
+ *
+ **/
+
+@media screen and (max-width:1400px) {
+    .hero__container {
+        padding-top: 10%
+    }
+}
+
+.index-page .header__container,
+.about .header__container {
+    height: 100%
+}
+
+.page__container .header__container {
+    height: 100%
+}
+
+/* ===========================================================================
+
+        ^navigation layout
+        ^navigation elements
+
+   =========================================================================== */
+
+/* in the event I don't want full-screen landings */
+.page__container {
+    padding-top: 35% 
+}
+
+@media screen and (max-width:770px) {
+    .page__container {
+        padding-top: 30px
+    }
+}
+
+@media screen and (max-width:770px) {
+    .page__container {
+        padding-top: 30px
+    }
+}
+
+.page__container.index-page,
+.page__container.about{
+    padding-top: 85%
+}
+
+.page__container {
+    padding-top: 85%;
+}
+
+@media screen and (max-width:770px) {
+    .page__container.index-page,
+    .page__container.about {
+        padding-top: 30px
+    }
+}
+
+@media screen and (max-width:770px) {
+    .page__container {
+        padding-top: 30px
+    }
+}
+
+.nav__top--sticky {
+    height: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 31
+}
+
+.nav__top--sticky li {
+    margin: 0
+}
+
+.nav__top--sticky a {
+    color: #fff;
+    position: relative;
+    text-decoration: none
+}
+
+.about .anchor-about,
+.index-page .anchor-index,
+.nav__top--sticky a:active,
+.nav__top--sticky a:hover,
+.projects .anchor-projects,
+.blog .anchor-blog {
+    background: rgba(0, 0, 0, .6);
+    border-bottom-color: #000; /* version b*/
+    color: #ff7a97;
+    text-decoration: none
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 680px; 
+    padding: 32px
+}
+
+.content>:last-child {
+    margin-bottom: 0
+}
+
+@media screen and (max-width:770px) {
+    .content {
+        padding: 28px 20px
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .content {
+        max-width: 800px;
+        padding: 56px 40px
+    }
+}
+
+.content__container {
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    background: #fafafa
+}
+
+/**
+ *
+ * ^footer
+ * 
+ **/
+
+.content__container,
+.footer__container {
+    position: relative;
+    z-index: 7
+}
+
+.footer__container {
+    text-align: center;
+    background: #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    color: #fff
+}
+
+body {
+    font-size: 120%
+}
+
+@media screen and (max-width:770px) {
+    body {
+        font-size: 78%
+    }
+    li,
+    p {
+        font-size: 120%
+    }
+    pre {
+        font-size: 125%;
+        line-height: 1.3
+    }
+}
+
+.img__anchor:hover .project__upfront {
+    -webkit-box-shadow: -1px 22px 5px -15px rgba(153,153,153,0.75);
+       -moz-box-shadow: -1px 22px 5px -15px rgba(153,153,153,0.75);
+            box-shadow: -1px 22px 5px -15px rgba(153,153,153,0.75);
+    border: 1.5px solid #999999;
+    transform: scale(1.05)
+}
+
+.project__upfront {
+    box-shadow: 0 0 transparent; /*this needs to be here for transition*/
+    border: 1px solid #999999;
+    -webkit-transition: all 250ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+       -moz-transition: all 250ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+         -o-transition: all 250ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+            transition: all 250ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+
+   -webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+      -moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+        -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+           transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000)
+}
+
+/**
+ *
+ * Bad things with IE if you don't specify line height
+ * Also, remember to ensure line-height is unitless
+ *
+ **/
+
+.line-height--one {
+    line-height: 1!important
+}
+
+.article__title {
+    margin-bottom: 4px
+}
+
+.article__nutshell {
+    margin-bottom: 24px
+}
+
+.article__summary {
+    margin-bottom: 8px
+}
+
+.article__summary strong,
+.article__nutshell strong {
+    letter-spacing: .05em
+}
+
+@media screen and (max-width:770px) {
+    .article__summary,
+    .article__nutshell {
+        font-size: .9em
+    }
+}
+
+code,
+pre {
+    background: #272822;
+    border: 1px solid #aaa;
+    color: #eee
+}
+
+pre code {
+    background: 0 0;
+    border: 0
+}
+
+/**
+ *
+ * Watch "background-attachment" and screen repaint
+ * [TODO] Pull these backgrounds if causing large performance dips
+ *
+ * Careful, though, don't start any other class names with "bgr___"
+ *
+ * [TODO] Find a better way to stack the media queries, below
+ * Normally, I wouldn't have this many, but I want to make sure
+ * large images aren't served when they don't need to be
+ *
+ **/
+
+[class*="bgr___"] {
+    height: 60vh;
+    text-indent: -999999px;
+    background-attachment: fixed;
+    background-position: center center;
+    bwebkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+
+.bgr___home {
+        background-image: url(../img/bgr/bgr_sprint_plan.jpg)
+    }
+
+@media screen and (max-width:770px) {
+    .bgr___home {
+        background-image: url(../img/bgr/bgr_sprint_plan770.jpg)
+    }
+}
+
+.bgr___about {
+    background-image: url(../img/bgr/bgr_assessment_plan.jpg)
+}
+
+@media screen and (max-width:770px) {
+    .bgr___about {
+        background-image: url(../img/bgr/bgr_assessment_plan770.jpg)
+    }
+}
+
+.bgr___bootcamp {
+    background-image: url(../img/bgr/bgr_about.jpg)
+}
+
+@media screen and (max-width:770px) {
+    .bgr___bootcamp {
+        background-image: url(../img/bgr/bgr_about770.jpg)
+    }
+}
+
+.bgr___projects {
+    background-image: url(../img/bgr/bgr_casestudy.jpg)
+}
+
+@media screen and (max-width:770px) {
+    .bgr___projects {
+        background-image: url(../img/bgr/bgr_casestudy770.jpg)
+    }
+}
+
+.bgr___cs_langwhich {
+    background-image: url(../img/bgr/bgr_cs_langwhich.jpg)
+}
+
+@media screen and (max-width:770px) {
+    .bgr___cs_langwhich {
+        background-image: url(../img/bgr/bgr_cs_langwhich770.jpg)
+    }
+}
+
+/* manually reset background properties for small devices */
+@media screen and (max-width:415px) {
+    [class*="bgr___"] {
+        display: inline-block;
+        width: 100%;
+        font-size: 0;
+        line-height: 0;
+        vertical-align: middle;
+        /*background-size: 100%; not sure I need this */
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: scroll
+    }
+
+    .bgr___home {
+        background-image: url(../img/bgr/bgr_sprint_plan415.jpg)
+    }
+
+    .bgr___about {
+        background-image: url(../img/bgr/bgr_assessment_plan415.jpg)
+    }
+
+    .bgr___bootcamp {
+        background-image: url(../img/bgr/bgr_about415.jpg)
+    }
+    
+    .bgr___projects {
+        background-image: url(../img/bgr/bgr_casestudy415.jpg)
+    }
+
+    .bgr___projects {
+        background-image: url(../img/bgr/bgr_cs_langwhich415.jpg)
+    }
+
+    .bgr___cs_langwhich {
+        background-image: url(../img/bgr/bgr_cs_langwhich415.jpg)
+    }
+}
+
+.bg__adjust--lightsalmon {
+    background: #ff99ac
+}
